@@ -1,0 +1,469 @@
+{
+  "info": {
+    "name": "Event Notifier API - Complete Collection",
+    "description": "Comprehensive API collection for abandoned cart notifications with Email, SMS, WhatsApp, and Hindi language support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "3.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5001",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "user-123",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🏥 Health & Auth",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            },
+            "description": "Check server health status"
+          },
+          "response": []
+        },
+        {
+          "name": "Auth Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth"]
+            },
+            "description": "Check authentication endpoint"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📧 Email Notifications",
+      "item": [
+        {
+          "name": "📧 Email - Standard Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"MacBook Pro 16-inch\",\n        \"price\": 2499.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Magic Mouse\",\n        \"price\": 79.99,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 2579.98\n  },\n  \"userName\": \"John Doe\",\n  \"recipientContact\": \"socialyt664+work@gmail.com\",\n  \"messageType\": \"email\",\n  \"buyLink\": \"https://shop.example.com/checkout\",\n  \"language\": \"english\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test email notification with rich HTML template and high-value cart"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📱 SMS Notifications",
+      "item": [
+        {
+          "name": "📱 SMS - Character Limit Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"Wireless Headphones\",\n        \"price\": 149.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Phone Case\",\n        \"price\": 24.99,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 174.98\n  },\n  \"userName\": \"Alex\",\n  \"recipientContact\": \"+18777804236\",\n  \"messageType\": \"sms\",\n  \"buyLink\": \"https://bit.ly/buy-now\",\n  \"language\": \"english\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test SMS with 120-character limit optimization to +18777804236"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "💬 WhatsApp Notifications",
+      "item": [
+        {
+          "name": "💬 WhatsApp - English",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"iPhone 15 Pro\",\n        \"price\": 999.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"AirPods Pro\",\n        \"price\": 249.99,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 1249.98\n  },\n  \"userName\": \"Sarah Johnson\",\n  \"recipientContact\": \"+18777804236\",\n  \"messageType\": \"whatsapp\",\n  \"buyLink\": \"https://shop.example.com/checkout\",\n  \"language\": \"english\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test WhatsApp with English message and high-value strategy"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🇮🇳 Hindi/Hinglish Notifications",
+      "item": [
+        {
+          "name": "💬 WhatsApp - Hindi Kitchen Products",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"Prestige Pressure Cooker 5L\",\n        \"price\": 45.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Tefal Non-Stick Pan\",\n        \"price\": 29.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Steel Dinner Plates Set\",\n        \"price\": 24.99,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 100.97\n  },\n  \"userName\": \"प्रिया शर्मा\",\n  \"recipientContact\": \"+919992622616\",\n  \"messageType\": \"whatsapp\",\n  \"buyLink\": \"https://shop.example.com/hindi-checkout\",\n  \"language\": \"hindi\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test Hinglish WhatsApp message with kitchen products - optimized for Indian customers"
+          },
+          "response": []
+        },
+        {
+          "name": "📧 Email - Hindi",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"Mixer Grinder 750W\",\n        \"price\": 89.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Rice Cooker 3L\",\n        \"price\": 39.99,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 129.98\n  },\n  \"userName\": \"राहुल कुमार\",\n  \"recipientContact\": \"socialyt664+hindi@gmail.com\",\n  \"messageType\": \"email\",\n  \"buyLink\": \"https://shop.example.com/hindi-checkout\",\n  \"language\": \"hindi\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test Hinglish email with kitchen appliances"
+          },
+          "response": []
+        },
+        {
+          "name": "📱 SMS - Hindi",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"Tawa Non-Stick\",\n        \"price\": 19.99,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 19.99\n  },\n  \"userName\": \"अनिल\",\n  \"recipientContact\": \"+18777804236\",\n  \"messageType\": \"sms\",\n  \"buyLink\": \"https://bit.ly/hindi-buy\",\n  \"language\": \"hindi\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test Hinglish SMS with 120-character limit"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🧪 Strategy Testing",
+      "item": [
+        {
+          "name": "💎 Value Strategy - High Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"Gaming Laptop RTX 4080\",\n        \"price\": 2299.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Gaming Monitor 4K\",\n        \"price\": 699.99,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 2999.98\n  },\n  \"userName\": \"Michael Chen\",\n  \"recipientContact\": \"socialyt664+gaming@gmail.com\",\n  \"messageType\": \"email\",\n  \"buyLink\": \"https://shop.example.com/gaming-checkout\",\n  \"language\": \"english\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test Value Strategy (cart > $1000) - emphasizes ROI and quality"
+          },
+          "response": []
+        },
+        {
+          "name": "👥 Social Strategy - Multi-Item",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"Wireless Mouse\",\n        \"price\": 49.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Mechanical Keyboard\",\n        \"price\": 89.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Monitor Stand\",\n        \"price\": 39.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"USB Hub\",\n        \"price\": 29.99,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 209.96\n  },\n  \"userName\": \"Emily Davis\",\n  \"recipientContact\": \"+18777804236\",\n  \"messageType\": \"whatsapp\",\n  \"buyLink\": \"https://shop.example.com/office-setup\",\n  \"language\": \"english\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test Social Strategy (4+ items) - emphasizes trending and popular choices"
+          },
+          "response": []
+        },
+        {
+          "name": "⚡ Urgency Strategy - Low Value",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"Coffee Mug\",\n        \"price\": 19.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Notebook\",\n        \"price\": 12.99,\n        \"quantity\": 2\n      }\n    ],\n    \"totalAmount\": 45.97\n  },\n  \"userName\": \"Lisa Park\",\n  \"recipientContact\": \"+18777804236\",\n  \"messageType\": \"sms\",\n  \"buyLink\": \"https://bit.ly/quick-buy\",\n  \"language\": \"english\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test Urgency Strategy (cart < $300) - time-based action triggers"
+          },
+          "response": []
+        },
+        {
+          "name": "🔥 Scarcity Strategy - Medium Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"Bluetooth Speaker\",\n        \"price\": 129.99,\n        \"quantity\": 1\n      },\n      {\n        \"name\": \"Wireless Charger\",\n        \"price\": 49.99,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 179.98\n  },\n  \"userName\": \"David Wilson\",\n  \"recipientContact\": \"socialyt664+audio@gmail.com\",\n  \"messageType\": \"email\",\n  \"buyLink\": \"https://shop.example.com/audio-gear\",\n  \"language\": \"english\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test Scarcity Strategy (default for medium carts) - limited availability focus"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "❌ Error Testing",
+      "item": [
+        {
+          "name": "❌ Invalid Message Type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": {\n    \"items\": [\n      {\n        \"name\": \"Test Product\",\n        \"price\": 10.00,\n        \"quantity\": 1\n      }\n    ],\n    \"totalAmount\": 10.00\n  },\n  \"userName\": \"Test User\",\n  \"recipientContact\": \"test@example.com\",\n  \"messageType\": \"invalid\",\n  \"buyLink\": \"https://shop.example.com/checkout\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test error handling for invalid message type"
+          },
+          "response": []
+        },
+        {
+          "name": "❌ Missing Required Fields",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userName\": \"Test User\",\n  \"messageType\": \"email\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cart/abandoned",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "cart", "abandoned"]
+            },
+            "description": "Test error handling for missing cart and recipientContact"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
