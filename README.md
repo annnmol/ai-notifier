@@ -107,9 +107,9 @@ A sophisticated abandoned cart recovery platform leveraging **Agentic AI**, **ba
 ### **AI Strategy Configuration**
 ```typescript
 // Automatic strategy selection based on cart characteristics
-- Value Strategy: Cart > $1000 → ROI justification
+- Value Strategy: Cart > 1000 → ROI justification
 - Social Strategy: 4+ items → Trending/popularity focus  
-- Urgency Strategy: Cart < $300 → Time-based pressure
+- Urgency Strategy: Cart < 300 → Time-based pressure
 - Scarcity Strategy: Default → Limited availability
 ```
 
